@@ -1,0 +1,12 @@
+.button {
+  padding: 20px 0;
+  .btn {
+    color: #ffda00 !important;
+    transition: color .3s ease-in-out;
+
+    &:hover {
+      color: #c6a301 !important;
+    }
+  }
+}
+

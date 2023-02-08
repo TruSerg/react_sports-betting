@@ -1,0 +1,27 @@
+.modal {
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 300px;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  background-color: rgba(125, 177, 34, 1);
+  line-height: 1.4;
+  margin-bottom: 30px;
+
+  .title {
+    font-size: 18px;
+    color: #0066ff;
+    font-weight: 600;
+  }
+}
+
+@media(max-width: 490px) {
+  .modal {
+    padding: 10px;
+
+    .title {
+      font-size: 16px;
+    }
+  }
+}

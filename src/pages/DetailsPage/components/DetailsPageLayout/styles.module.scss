@@ -1,0 +1,47 @@
+.wrapper {
+  padding: 50px 0;
+
+  .eventWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+    .selectArea {
+      max-width: 300px;
+      width: 100%;
+    }
+
+    .linkArea {
+      align-self: flex-end;
+    }
+  }
+}
+
+@media(max-width:767px) {
+  .wrapper {
+    padding: 40px 0;
+
+    .eventWrapper {
+      gap: 40px;
+    }
+  }
+}
+
+@media(max-width: 490px) {
+  .wrapper {
+    padding: 20px 0;
+
+    .eventWrapper {
+      gap: 30px;
+
+      .selectArea {
+        margin: 0 auto;
+      }
+
+      .linkArea {
+        align-self: center;
+      }
+    }
+  }
+}
+
