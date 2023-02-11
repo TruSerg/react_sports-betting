@@ -1,31 +1,20 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useCallback, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { handleSelectValueChange } from "../../../store/getEventDetailsSlice";
 
 import { ROUTES } from "../../../routes/routeNames";
 
 import DetailsPageLayout from "../components/DetailsPageLayout";
+import useMakeBit from "../../../hooks/useMakeBit";
 
 const DetailsPageContainer = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { eventDetails, eventValue } = useSelector(
     (state) => state.eventDetailsData
   );
 
-  const handleEventChange = useCallback(
-    (e) => {
-      dispatch(handleSelectValueChange(e.target.value));
-    },
-    [dispatch]
-  );
-
-  const handleMakeBid = useCallback(() => {
-    navigate(ROUTES.HOME_PAGE);
-  }, [navigate]);
+  const { handleMakeBid, handleEventChange } = useMakeBit();
 
   useEffect(() => {
     if (eventDetails.title === undefined) {

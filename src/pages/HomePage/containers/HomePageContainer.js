@@ -7,7 +7,10 @@ import {
 } from "../../../store/sportsEventsApi";
 
 import { useFoundEventDetails } from "../../../hooks/useFoundEventDetails";
-import { handleSelectValueChange } from "../../../store/getEventDetailsSlice";
+import {
+  handleSelectValueChange,
+  isHandleMadeBitChange,
+} from "../../../store/getEventDetailsSlice";
 
 import useModal from "../../../hooks/useModal";
 
@@ -16,7 +19,7 @@ import HomePageLayout from "../components/HomePageLayout";
 const HomePageContainer = () => {
   const dispatch = useDispatch();
 
-  const { eventDetails, eventValue } = useSelector(
+  const { eventDetails, eventValue, isHandleMadeBit } = useSelector(
     (state) => state.eventDetailsData
   );
 
@@ -26,33 +29,33 @@ const HomePageContainer = () => {
 
   const { handleFoundEventDetails } = useFoundEventDetails();
 
-  const { isOpen, handleOpen, handleClose } = useModal();
+  const { isModalOpen, handleModalOpen, handleModalClose } = useModal();
 
   useEffect(() => {
-    if (eventValue) {
-      handleOpen();
+    if (isHandleMadeBit) {
+      handleModalOpen();
     }
 
     setTimeout(() => {
-      handleClose();
-    }, 3000);
+      handleModalClose();
+    }, 5000);
 
     return () => {
       dispatch(handleSelectValueChange(""));
+      dispatch(isHandleMadeBitChange(false));
     };
-  }, [dispatch, eventValue, handleOpen, handleClose]);
+  }, [dispatch, isHandleMadeBit, handleModalOpen, handleModalClose]);
 
   return (
     <HomePageLayout
-      isOpen={isOpen}
+      isOpen={isModalOpen}
       isLoading={isLoading}
       eventDetails={eventDetails}
       eventValue={eventValue}
       currentEventsList={currentEventsList}
       upcomingEventsList={upcomingEventsList}
       handleFoundEventDetails={handleFoundEventDetails}
-      handleOpen={handleOpen}
-      handleClose={handleClose}
+      handleClose={handleModalClose}
     />
   );
 };

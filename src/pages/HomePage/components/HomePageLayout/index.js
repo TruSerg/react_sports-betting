@@ -7,17 +7,19 @@ import style from "./styles.module.scss";
 
 const HomePageLayout = ({
   isLoading,
+  isOpen,
   eventDetails,
   eventValue,
   currentEventsList,
   upcomingEventsList,
   handleFoundEventDetails,
-  isOpen,
+  handleClose,
 }) => {
   return (
     <div className={style.wrapper}>
       {isOpen && (
         <Modal
+          handleClose={handleClose}
           title={`Спасибо, ваша ставка ${
             eventDetails.title
           } ${eventValue.toLowerCase()} принята!`}

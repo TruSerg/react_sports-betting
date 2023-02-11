@@ -5,6 +5,7 @@ const getEventDetailsSlice = createSlice({
   initialState: {
     eventDetails: {},
     eventValue: "",
+    isHandleMadeBit: false,
   },
 
   reducers: {
@@ -14,10 +15,16 @@ const getEventDetailsSlice = createSlice({
     handleSelectValueChange(state, { payload }) {
       state.eventValue = payload;
     },
+    isHandleMadeBitChange(state, { payload }) {
+      state.isHandleMadeBit = payload;
+    },
   },
 });
 
-export const { foundEventDetails, handleSelectValueChange } =
-  getEventDetailsSlice.actions;
+export const {
+  foundEventDetails,
+  handleSelectValueChange,
+  isHandleMadeBitChange,
+} = getEventDetailsSlice.actions;
 
 export default getEventDetailsSlice.reducer;
